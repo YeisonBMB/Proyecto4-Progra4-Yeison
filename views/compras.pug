@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title Compras
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
+  body(style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;")
+    .container(style="max-width: 900px;")
+      .card
+        .card-body
+          h1.card-title(text-align="center") Compras
+          form(action="/users/compras", method="POST")
+            .form-group
+              label(for="txtCedula") Cédula:
+              input#txtCedula.form-control(type="text", name="cedula")
+            .form-group
+              label(for="ddlProductos") Productos:
+              select#ddlProductos.form-control(name="producto")
+                option(value="Televisor") Televisor,Costo por Unidad 35000
+                option(value="Tablet") Tablet,Costo por Unidad 65000
+                option(value="Telefono") Telefono,Costo por Unidad 105000
+                option(value="Plancha") Plancha,Costo por Unidad 13000
+                // Agrega más opciones de productos aquí
+            .form-group
+              label(for="txtDetalle") Detalle:
+              textarea#txtDetalle.form-control(rows="3", name="detalle")
+            .form-group
+              label(for="txtCantidad") Cantidad:
+              input#txtCantidad.form-control(type="number", min="1", max="5", name="cantidad")
+            div
+              button#btnAgregar.btn.btn-primary(type="submit") Agregar 
+            // Show the success message if it exists
+          if compraExitosa
+            .alert.alert-success(role="alert")
+              | Compra exitosa
